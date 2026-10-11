@@ -1,5 +1,4 @@
 """Portfolio server. Public site is open; admin requires password."""
-import cgi
 import hashlib
 import json
 import os
@@ -7,7 +6,7 @@ import re
 from http import HTTPStatus, cookies
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, urlparse, parse_multipart
 
 ROOT = Path(__file__).resolve().parent
 PASSWORD = os.environ.get("ADMIN_PASSWORD") or "atelier"
@@ -208,8 +207,9 @@ class PortfolioHandler(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    server = ThreadingHTTPServer(("127.0.0.1", 8000), PortfolioHandler)
-    print("Portfolio: http://localhost:8000", flush=True)
-    print("Admin:     http://localhost:8000/admin/", flush=True)
+    port = int(os.environ.get("PORT", 8000))
+    server = ThreadingHTTPServer(("0.0.0.0", port), PortfolioHandler)
+    print(f"Portfolio: http://localhost:{port}", flush=True)
+    print(f"Admin:     http://localhost:{port}/admin/", flush=True)
     print("Password:  " + PASSWORD, flush=True)
     server.serve_forever()

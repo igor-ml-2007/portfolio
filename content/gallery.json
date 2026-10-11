@@ -1,6 +1,4 @@
 {
-  "heroImage": "/photos/hero-work.jpg",
-  "artistImage": "/photos/artist.jpg",
   "works": [
     {
       "title": "Земляника",
@@ -65,5 +63,7 @@
       "image": "",
       "featured": false
     }
-  ]
+  ],
+  "heroImage": "/photos/hero-work.jpg",
+  "artistImage": "/photos/artist.jpg"
 }

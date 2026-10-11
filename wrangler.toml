@@ -1,0 +1,14 @@
+name = "portfolio"
+compatibility_date = "2026-01-01"
+
+[site]
+bucket = "./"
+
+[[kv_namespaces]]
+binding = "GALLERY"
+id = "gallery_kv_namespace_id"
+preview_id = "gallery_kv_preview_id"
+
+[[r2_buckets]]
+binding = "PHOTOS"
+bucket_name = "portfolio-photos"

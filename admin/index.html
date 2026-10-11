@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Профиль художницы</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+    :root { --ink: #201e1c; --paper: #f7f3ec; --line: #d6cfc5; --orange: #f3652d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Manrope, sans-serif; }
+    .top { padding: 30px 6vw; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-weight: 600; font-size: 14px; letter-spacing: -0.04em; }
+    .brand span { font: italic 16px "Playfair Display"; }
+    .back { color: inherit; font: 10px "DM Mono"; text-decoration: none; text-transform: uppercase; }
+    .shell { max-width: 1100px; margin: auto; padding: 70px 6vw 100px; }
+    .eyebrow { font: 10px "DM Mono"; text-transform: uppercase; letter-spacing: 0.1em; }
+    .eyebrow:before { content: ""; display: inline-block; width: 18px; border-top: 1px solid; margin: 0 8px 3px 0; }
+    h1 { font: 500 clamp(48px, 7vw, 82px)/0.92 "Playfair Display"; letter-spacing: -0.06em; margin: 14px 0 50px; }
+    .toolbar { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding: 18px 0; }
+    .button { background: var(--ink); color: var(--paper); border: 0; padding: 13px 17px; font: 11px Manrope; cursor: pointer; }
+    .button.alt { background: transparent; border: 1px solid var(--ink); color: var(--ink); }
+    #works { display: grid; gap: 20px; }
+    .work { border: 1px solid var(--line); padding: 20px; display: grid; grid-template-columns: 120px 1fr auto; gap: 20px; align-items: start; background: #fffcf7; }
+    .preview { width: 120px; aspect-ratio: 1; object-fit: cover; background: #e5ddd2; }
+    .fields { display: grid; grid-template-columns: 2fr 0.7fr 1.3fr; gap: 12px; }
+    .fields label { display: grid; gap: 6px; font: 9px "DM Mono"; letter-spacing: 0.05em; text-transform: uppercase; color: #6e675e; }
+    .options { display: flex; gap: 16px; align-items: center; margin-top: 14px; font-size: 11px; }
+    .upload { font: 10px "DM Mono"; cursor: pointer; text-decoration: underline; }
+    .remove { background: none; border: 0; color: #a33b24; font: 20px Manrope; cursor: pointer; }
+    input, select { border: 1px solid var(--line); background: white; padding: 9px; font: 13px Manrope; color: var(--ink); }
+    .status { position: fixed; right: 25px; bottom: 25px; background: #253d32; color: white; padding: 13px 17px; font: 11px Manrope; transform: translateY(90px); transition: 0.3s; }
+    .status.show { transform: none; }
+    .hero-section { border: 1px solid var(--line); padding: 20px; margin-bottom: 30px; background: #fffcf7; }
+    .hero-title { font: 12px "DM Mono"; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 15px; color: #6e675e; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .hero-item { display: grid; gap: 10px; }
+    .hero-item label { font: 9px "DM Mono"; text-transform: uppercase; color: #6e675e; }
+    .hero-preview { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #e5ddd2; }
+    .artist-preview { width: 100%; aspect-ratio: 1; object-fit: cover; background: #e5ddd2; }
+    @media (max-width: 700px) {
+      .shell { padding: 45px 20px; }
+      .work { grid-template-columns: 1fr; }
+      .preview { width: 100%; aspect-ratio: 1.5; }
+      .fields { grid-template-columns: 1fr 1fr; }
+      .top { padding: 22px 20px; }
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">ЕКАТЕРИНА <span>ГУРДАЛИЕВА</span></div>
+    <div>
+      <a class="back" href="/">← Открыть сайт</a> &nbsp; <a class="back" href="/admin/logout">Выйти</a>
+    </div>
+  </header>
+  <main class="shell">
+    <p class="eyebrow">Защищённый профиль</p>
+    <h1>Редактор<br><em>галереи.</em></h1>
+
+    <section class="hero-section">
+      <div class="hero-title">Главные изображения</div>
+      <div class="hero-grid">
+        <div class="hero-item">
+          <label>Главная работа (hero)</label>
+          <img id="heroPreview" class="hero-preview" src="" alt="">
+          <label class="upload">Заменить фото<input type="file" id="heroUpload" accept="image/jpeg,image/png,image/webp,image/gif" hidden></label>
+        </div>
+        <div class="hero-item">
+          <label>Фото художницы</label>
+          <img id="artistPreview" class="artist-preview" src="" alt="">
+          <label class="upload">Заменить фото<input type="file" id="artistUpload" accept="image/jpeg,image/png,image/webp,image/gif" hidden></label>
+        </div>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <span id="workTotal">Загрузка работ…</span>
+      <div>
+        <button class="button alt" id="addWork">+ Новая работа</button>
+        <button class="button" id="save">Сохранить изменения</button>
+      </div>
+    </div>
+    <section id="works"></section>
+  </main>
+  <div class="status" id="status"></div>
+  <script src="admin.js"></script>
+</body>
+</html>

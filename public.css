@@ -1,0 +1,14 @@
+/* Public view: controls for changing the portfolio are intentionally unavailable. */
+.gallery-index{margin:0;font:9px/1.55 "DM Mono";letter-spacing:.1em;color:#716c64;text-align:right}
+.delete-work{display:none!important}
+.contact-layout{display:grid;grid-template-columns:1.05fr .8fr;gap:9vw;align-items:start}
+.contact-form{border:1px solid var(--line);padding:28px;display:grid;gap:18px;background:#fffcf7}
+.contact-form .form-label{font:10px "DM Mono";letter-spacing:.09em;text-transform:uppercase;margin:0 0 6px}
+.contact-form label{display:grid;gap:7px;font:9px "DM Mono";letter-spacing:.07em;text-transform:uppercase;color:#746c63}
+.contact-names{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.contact-form input,.contact-form textarea{border:0;border-bottom:1px solid #c7c0b6;background:transparent;padding:8px 0;font:13px Manrope;outline:0;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--ink)}
+.contact-form textarea{min-height:92px}
+.contact-form button{border:0;background:var(--ink);color:var(--paper);padding:14px 16px;font:11px Manrope;cursor:pointer;transition:.2s}.contact-form button:hover{background:var(--orange);color:var(--ink)}
+.contact-form button b{font-size:17px;margin-left:8px}.contact-hint{margin:0;color:#827a71;font:9px/1.45 "DM Mono"}
+@media(max-width:700px){.contact-layout{grid-template-columns:1fr;gap:55px}.gallery-index{display:none}.contact-form{padding:21px}.contact-names{grid-template-columns:1fr}}

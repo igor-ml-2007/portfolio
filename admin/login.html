@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Вход в профиль</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap");
+      :root { --ink: #201e1c; --paper: #f7f3ec; --line: #d6cfc5; --orange: #f3652d; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: var(--paper); color: var(--ink); font-family: Manrope, sans-serif; display: grid; place-items: center; padding: 32px 20px; }
+      .card { width: min(420px, 100%); border: 1px solid var(--line); background: #fffcf7; padding: 36px 32px 40px; }
+      .eyebrow { font: 10px "DM Mono"; text-transform: uppercase; letter-spacing: .1em; }
+      .eyebrow:before { content: ""; display: inline-block; width: 18px; border-top: 1px solid; margin: 0 8px 3px 0; }
+      h1 { font: 500 42px/1 "Playfair Display"; letter-spacing: -.05em; margin: 12px 0 18px; }
+      p { font-size: 14px; line-height: 1.5; color: #6e675e; margin: 0 0 24px; }
+      label { display: grid; gap: 6px; font: 9px "DM Mono"; letter-spacing: .05em; text-transform: uppercase; color: #6e675e; margin-bottom: 14px; }
+      input { border: 1px solid var(--line); background: white; padding: 11px; font: 14px Manrope; color: var(--ink); }
+      button { width: 100%; margin-top: 8px; background: var(--ink); color: var(--paper); border: 0; padding: 14px 17px; font: 12px Manrope; cursor: pointer; }
+      .error { display: none; margin-bottom: 16px; color: #a33b24; font-size: 13px; }
+      .error.show { display: block; }
+      a { color: inherit; font: 10px "DM Mono"; text-transform: uppercase; text-decoration: none; }
+      .back { display: inline-block; margin-top: 22px; }
+    </style>
+  </head>
+  <body>
+    <form class="card" method="post" action="/api/login">
+      <p class="eyebrow">Защищённый профиль</p>
+      <h1>Вход<em>.</em></h1>
+      <p>Введите пароль для доступа к админке.</p>
+      <p class="error" id="error">Неверный пароль.</p>
+      <label>Пароль<input required type="password" name="password" autocomplete="current-password" /></label>
+      <button type="submit">Войти</button>
+      <a class="back" href="/">← На сайт</a>
+    </form>
+    <script>
+      if (new URLSearchParams(location.search).get("error")) {
+        document.querySelector("#error").classList.add("show");
+      }
+    </script>
+  </body>
+</html>

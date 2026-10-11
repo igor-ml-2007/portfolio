@@ -1,0 +1,69 @@
+{
+  "heroImage": "/photos/hero-work.jpg",
+  "artistImage": "/photos/artist.jpg",
+  "works": [
+    {
+      "title": "Земляника",
+      "year": "2024",
+      "material": "Холст, масло",
+      "category": "painting",
+      "format": "tall",
+      "image": "/photos/work-01.jpg",
+      "featured": true
+    },
+    {
+      "title": "Полевые записи",
+      "year": "2023",
+      "material": "Бумага, тушь",
+      "category": "graphic",
+      "format": "square",
+      "image": "/photos/work-02.jpg",
+      "featured": true
+    },
+    {
+      "title": "Найденное",
+      "year": "2024",
+      "material": "Объект",
+      "category": "object",
+      "format": "square",
+      "image": "/photos/work-03.jpg",
+      "featured": true
+    },
+    {
+      "title": "Внутренний сад",
+      "year": "2024",
+      "material": "Холст, масло",
+      "category": "painting",
+      "format": "square",
+      "image": "/photos/work-04.jpg",
+      "featured": false
+    },
+    {
+      "title": "Линия горизонта",
+      "year": "2022",
+      "material": "Акварель",
+      "category": "graphic",
+      "format": "tall",
+      "image": "/photos/work-05.jpg",
+      "featured": false
+    },
+    {
+      "title": "Память формы",
+      "year": "2023",
+      "material": "Керамика",
+      "category": "object",
+      "format": "wide",
+      "image": "/photos/work-06.jpg",
+      "featured": false
+    },
+    {
+      "title": "Новая работа",
+      "year": "2026",
+      "material": "Материал",
+      "category": "painting",
+      "format": "square",
+      "image": "",
+      "featured": false
+    }
+  ]
+}

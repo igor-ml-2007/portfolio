@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f3ec" />
+    <title>ЕКАТЕРИНА · Художница</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="extra.css" />
+    <link rel="stylesheet" href="public.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="На главную">ЕКАТЕРИНА <span>ГУРДАЛИЕВА</span></a>
+      <nav>
+        <a href="#works">Работы</a>
+        <a href="#about">Обо мне</a>
+        <a href="#contact">Связь</a>
+      </nav>
+      <button class="circle-button menu-button" id="openInfo" aria-label="Открыть информацию"><i>↗</i></button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span> Художница · Москва / мир</p>
+          <h1>Я создаю<br /> <em>исскуство</em><br /></h1>
+          <div class="hero-footer">
+            <p>Живопись, объекты и наблюдения<br /></p>
+            <a class="scroll-link" href="#works">Смотреть работы <b>↓</b></a>
+          </div>
+        </div>
+        <div class="hero-art cover-placeholder static-slot reveal delay-1">
+          <img id="heroImage" src="" alt="Главная работа" />
+          <div class="placeholder-mark">Загрузка...</div>
+          <div class="hero-note">путь к главной<br />работе</div>
+          <p class="art-caption">выбранная работа</p>
+        </div>
+        <div class="vertical-name">ПОРТФОЛИО · 2026—27</div>
+      </section>
+
+      <section id="works" class="works-section">
+        <div class="section-head reveal">
+          <div><p class="eyebrow"><span></span> Избранное</p><h2>Из мастерской</h2></div>
+          <p class="gallery-index">КОЛЛЕКЦИЯ<br />2022—2026</p>
+        </div>
+        <p class="selected-note reveal">На главной — только несколько главных работ.<br />Полную коллекцию можно открыть ниже.</p>
+        <div class="featured-gallery" id="featuredGallery">
+        </div>
+        <button class="open-gallery reveal" id="openGallery">Открыть всю галерею <span>↓</span></button>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="about-image static-slot reveal"><img id="artistImage" src="" alt="Екатерина в мастерской" /><div class="artist-path">Загрузка...</div><span>ЕКАТЕРИНА<br />В МАСТЕРСКОЙ</span></div>
+        <div class="about-copy reveal delay-1"><p class="eyebrow"><span></span> Обо мне</p><h2>Собирать<br />тишину <em>в цвет.</em></h2><p class="intro">Мне интересно, как знакомое становится странным, если задержать на нём взгляд чуть дольше. В работе я оставляю место случаю — потёкам краски, неровной линии, найденному материалу.</p><a class="underlink" href="#contact">Больше обо мне <b>↗</b></a></div>
+        <div class="about-stats reveal delay-2"><div><b>7</b><span>лет практики</span></div><div><b>32</b><span>выставки</span></div><div><b>14</b><span>работ в коллекциях</span></div></div>
+      </section>
+      <section id="contact" class="contact-section"><p class="eyebrow"><span></span> Связь</p><div class="contact-layout"><div><h2>Есть идея?<br /><em>Давайте создадим</em><br />что-то живое.</h2><a href="mailto:gurdalievaekaterina1010@gmail.com" class="mail-link">gurdalievaekaterina1010@gmail.com <b>↗</b></a><p class="socials">Instagram &nbsp;·&nbsp; Telegram &nbsp;·&nbsp; Behance</p></div><form class="contact-form" action="https://formsubmit.co/gurdalievaekaterina1010@gmail.com" method="POST"><input type="hidden" name="_subject" value="Новое сообщение с сайта-портфолио" /><input type="hidden" name="_template" value="table" /><input type="hidden" name="_captcha" value="false" /><input type="hidden" name="_next" value="https://formsubmit.co/thanks" /><p class="form-label">Написать художнице</p><div class="contact-names"><label>First name<input required name="first_name" autocomplete="given-name" placeholder="Имя" /></label><label>Last name<input required name="last_name" autocomplete="family-name" placeholder="Фамилия" /></label></div><label>E-mail<input required type="email" name="email" autocomplete="email" placeholder="your@email.com" /></label><label>Message<textarea required name="message" placeholder="Расскажите, что вы задумали..."></textarea></label><button type="submit">Отправить сообщение <b>→</b></button><p class="contact-hint">Сообщение придёт на почту художницы.</p></form></div></section>
+    </main>
+    <footer><span>© 2026 ЕКАТЕРИНА ГУРДАЛИЕВА</span><span>С ЛЮБОВЬЮ К МАТЕРИАЛУ</span><a href="#top">НАВЕРХ ↑</a></footer>
+
+    <aside class="info-panel" id="infoPanel" aria-hidden="true"><button class="close-panel" id="closeInfo" aria-label="Закрыть">×</button><p class="eyebrow"><span></span> Контакты и данные</p><h2>Екатерина<br /><em>Гурдалиева</em></h2><dl><div><dt>Город</dt><dd>Москва, Россия</dd></div><div><dt>Направление</dt><dd>Живопись · графика · объекты</dd></div><div><dt>Почта</dt><dd>gurdalievaekaterina1010@gmail.com</dd></div><div><dt>Соцсети</dt><dd>Instagram · Telegram · Behance</dd></div></dl><a class="admin-entry" href="/admin/">Войти в профиль <b>↗</b></a><p class="panel-foot">Вход доступен только приглашённым<br />администраторам.</p></aside><div class="panel-shade" id="panelShade"></div>
+
+    <dialog id="galleryDialog" class="gallery-dialog">
+      <div class="gallery-dialog-head"><div><p class="eyebrow"><span></span> Полная коллекция</p><h2>Все работы <sup id="workCount">06</sup></h2></div><button class="close-dialog" id="closeGallery" aria-label="Закрыть">×</button></div>
+      <div class="filters"><button class="active" data-filter="all">Все работы</button><button data-filter="painting">Живопись</button><button data-filter="graphic">Графика</button><button data-filter="object">Объекты</button></div>
+      <div class="gallery" id="gallery">
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

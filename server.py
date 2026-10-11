@@ -6,7 +6,7 @@ import re
 from http import HTTPStatus, cookies
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse, parse_multipart
+from urllib.parse import parse_qs, urlparse
 
 ROOT = Path(__file__).resolve().parent
 PASSWORD = os.environ.get("ADMIN_PASSWORD") or "atelier"
@@ -182,19 +182,36 @@ class PortfolioHandler(SimpleHTTPRequestHandler):
             self.send_json({"ok": True})
             return
 
-        form = cgi.FieldStorage(
-            fp=self.rfile,
-            headers=self.headers,
-            environ={"REQUEST_METHOD": "POST", "CONTENT_TYPE": self.headers.get("Content-Type", "")},
-        )
-        upload = form["image"] if "image" in form else None
-        # cgi.FieldStorage deliberately does not support truth-value testing for
-        # uploaded files.  `if not upload` raised TypeError here and turned every
-        # upload into a 500 response.
-        if upload is None or not getattr(upload, "file", None):
+        # Parse multipart form data manually
+        content_type = self.headers.get("Content-Type", "")
+        if not content_type.startswith("multipart/form-data"):
+            self.send_json({"error": "Некорректный Content-Type"}, HTTPStatus.BAD_REQUEST)
+            return
+
+        boundary = content_type.split("boundary=")[1].encode()
+        content = self.rfile.read(length)
+
+        # Simple multipart parser
+        parts = content.split(b"--" + boundary)
+        upload_data = None
+        filename = None
+
+        for part in parts[1:-1]:  # Skip first and last (empty) parts
+            if b"filename=" in part:
+                # Extract filename
+                filename_match = re.search(rb'filename="([^"]+)"', part)
+                if filename_match:
+                    filename = filename_match.group(1).decode("utf-8")
+                # Extract content (after headers)
+                content_start = part.find(b"\r\n\r\n") + 4
+                upload_data = part[content_start:]
+                break
+
+        if not upload_data or not filename:
             self.send_json({"error": "Файл не получен"}, HTTPStatus.BAD_REQUEST)
             return
-        original = Path(upload.filename or "image.jpg").name
+
+        original = Path(filename).name
         extension = Path(original).suffix.lower()
         if extension not in {".jpg", ".jpeg", ".png", ".webp", ".gif"}:
             self.send_json({"error": "Поддерживаются JPG, PNG, WEBP и GIF"}, HTTPStatus.BAD_REQUEST)
@@ -202,7 +219,7 @@ class PortfolioHandler(SimpleHTTPRequestHandler):
         stem = re.sub(r"[^a-zA-Z0-9_-]+", "-", Path(original).stem).strip("-") or "work"
         destination = ROOT / "photos" / f"{stem}-{os.urandom(4).hex()}{extension}"
         with destination.open("wb") as output:
-            output.write(upload.file.read())
+            output.write(upload_data)
         self.send_json({"path": f"/photos/{destination.name}"}, HTTPStatus.CREATED)
 
 

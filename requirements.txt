@@ -1,2 +1,2 @@
 # Python dependencies
-# Project uses only standard library, no external dependencies needed
+python-multipart

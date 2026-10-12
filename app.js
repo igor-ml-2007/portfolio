@@ -80,4 +80,15 @@ const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   if (entry.isIntersecting) entry.target.classList.add('visible');
 }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+// Hide loading screen when page is loaded
+window.addEventListener('load', () => {
+  const loadingScreen = document.getElementById('loadingScreen');
+  if (loadingScreen) {
+    setTimeout(() => {
+      loadingScreen.classList.add('hidden');
+    }, 500);
+  }
+});
+
 loadWorks();

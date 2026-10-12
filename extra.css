@@ -1,4 +1,4 @@
-.work-card img{width:100%;display:block;object-fit:cover}
+.loading-screen{position:fixed;z-index:9999;inset:0;background:#f7f3ec;display:grid;place-content:center;transition:opacity .65s ease}.loading-screen.hidden{opacity:0;pointer-events:none}.loading-content{text-align:center}.loading-text{font:600 clamp(32px,5vw,56px)/1.1 "Playfair Display";letter-spacing:-.06em;color:#201e1c}.loading-text span{font:italic;color:#6e675e}.loading-line{width:1px;height:80px;background:#d6cfc5;margin:32px auto 0;animation:lineGrow 1.2s ease-in-out infinite;transform-origin:top}@keyframes lineGrow{0%,100%{transform:scaleY(0)}50%{transform:scaleY(1)}}.work-card img{width:100%;display:block;object-fit:cover}
 .work-card.tall img{aspect-ratio:.75}
 .work-card.square img{aspect-ratio:1}
 .work-card.wide img{aspect-ratio:1.68}

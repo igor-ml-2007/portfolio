@@ -36,11 +36,11 @@ SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
 EMAIL_TO = os.environ.get("EMAIL_TO", "gurdalievaekaterina1010@gmail.com")
 FORM2EMAIL_URL = os.environ.get(
     "FORM2EMAIL_URL",
-    "https://form2email.terragohan.com/f/jtugIZDWVInNWSEYZKSAS01gwW_3paINHmQq4qbYim0",
+    "https://form2email.terragohan.com/f/u51CLJKrXPuQunMJJCMkDj78GLKnrhd6_1zFQXn_uBk",
 )
 FORM2EMAIL_MANAGE = os.environ.get(
     "FORM2EMAIL_MANAGE",
-    "https://form2email.terragohan.com/api/endpoints/e7Vy-OGp0NHEz5ZjSs6hBsgCDfIA_EoKlrUlCC1mRRw",
+    "",  # Will be set after email verification
 )
 VERIFY_HINT = (
     "На почту художницы ушло письмо для подтверждения формы. "

@@ -118,7 +118,7 @@ if (contactForm) {
         subject: `Сообщение с сайта от ${name}`,
         message,
       };
-      let response = await fetch('https://form2email.terragohan.com/f/jtugIZDWVInNWSEYZKSAS01gwW_3paINHmQq4qbYim0', {
+      let response = await fetch('https://form2email.terragohan.com/f/u51CLJKrXPuQunMJJCMkDj78GLKnrhd6_1zFQXn_uBk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

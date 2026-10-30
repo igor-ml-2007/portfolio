@@ -92,3 +92,70 @@ window.addEventListener('load', () => {
 });
 
 loadWorks();
+
+// Contact form handling
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    const submitBtn = document.getElementById('submitBtn');
+    const contactHint = document.getElementById('contactHint');
+
+    const name = `${firstName} ${lastName}`.trim();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправка...';
+
+    try {
+      const payload = {
+        name,
+        email,
+        subject: `Сообщение с сайта от ${name}`,
+        message,
+      };
+      let response = await fetch('https://form2email.terragohan.com/f/jtugIZDWVInNWSEYZKSAS01gwW_3paINHmQq4qbYim0', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message }),
+        });
+      }
+
+      const data = await response.json().catch(() => ({}));
+      const blocked = response.status === 403;
+      const sent = response.ok || response.status === 204;
+
+      if (sent) {
+        contactHint.textContent = 'Сообщение отправлено! ✓';
+        contactHint.style.color = '#4CAF50';
+        contactForm.reset();
+      } else if (blocked) {
+        contactHint.textContent = data.error || 'На почту художницы ушло письмо для подтверждения формы. Откройте ссылку в письме и отправьте ещё раз. Проверьте «Спам».';
+        contactHint.style.color = '#f44336';
+      } else {
+        contactHint.textContent = data.error || data.detail || 'Ошибка отправки. Попробуйте ещё раз.';
+        contactHint.style.color = '#f44336';
+      }
+    } catch (error) {
+      contactHint.textContent = 'Ошибка отправки. Попробуйте ещё раз.';
+      contactHint.style.color = '#f44336';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Отправить сообщение →';
+    }
+  });
+}

@@ -1,15 +1,6 @@
 {
   "works": [
     {
-      "title": "Земляника",
-      "year": "2024",
-      "material": "Холст, масло",
-      "category": "painting",
-      "format": "tall",
-      "image": "/photos/work-01.jpg",
-      "featured": true
-    },
-    {
       "title": "Полевые записи",
       "year": "2023",
       "material": "Бумага, тушь",
